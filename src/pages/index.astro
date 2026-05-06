@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Refrain from "../components/Refrain.astro";
+import StackMarquee from "../components/StackMarquee.astro";
+import Lanes from "../components/Lanes.astro";
+import WhoFor from "../components/WhoFor.astro";
+import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base>
+  <SmoothScroll />
+  <Header />
+  <main class="relative z-10">
+    <Hero />
+    <Refrain />
+    <StackMarquee />
+    <Lanes />
+    <WhoFor />
+    <About />
+  </main>
+  <Footer />
+</Base>

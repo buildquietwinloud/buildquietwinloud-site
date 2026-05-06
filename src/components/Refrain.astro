@@ -1,0 +1,23 @@
+---
+const phrase = "BUILD QUIET ★ WIN LOUD ";
+const repeated = phrase.repeat(8);
+---
+
+<section class="relative w-full overflow-hidden border-y border-ink/15 bg-rust py-5">
+  <div class="flex items-center whitespace-nowrap" data-refrain>
+    <span class="font-display text-2xl text-ink sm:text-3xl">{repeated}</span>
+    <span class="font-display text-2xl text-ink sm:text-3xl">{repeated}</span>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    const m = document.querySelector<HTMLElement>("[data-refrain]");
+    if (m) {
+      const w = m.scrollWidth / 2;
+      gsap.to(m, { x: -w, duration: 35, ease: "none", repeat: -1 });
+    }
+  }
+</script>

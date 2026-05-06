@@ -1,0 +1,131 @@
+---
+---
+
+<section class="relative w-full overflow-hidden px-6 pt-20 pb-28 sm:px-10 sm:pt-28 sm:pb-32 lg:px-14 lg:pt-36 xl:px-20">
+  <div class="mx-auto w-full max-w-[1760px]">
+    <div class="flex items-center justify-between reveal-up" data-hero-eyebrow>
+      <span class="bracket">Issue 00</span>
+      <span class="bracket">Letter from a builder</span>
+      <span class="bracket hidden sm:inline-block">Live ◉ 2026</span>
+    </div>
+
+    <h1
+      class="font-display mt-10 text-[clamp(4rem,14.5vw,19rem)] text-ink dark:text-paper"
+      data-hero-h1
+    >
+      <span class="block reveal-up" data-hero-line>BUILD QUIET,</span>
+      <span class="block reveal-up text-rust" data-hero-line data-hero-loud>WIN LOUD.</span>
+    </h1>
+
+    <div class="mt-12 flex w-full flex-col gap-12 sm:mt-16 sm:flex-row sm:items-end sm:justify-between">
+      <div class="max-w-2xl">
+        <p class="font-editorial text-3xl text-ink dark:text-paper sm:text-4xl xl:text-5xl reveal-up" data-hero-tag>
+          AI tools, real builds, no hype.
+        </p>
+        <p class="mt-6 max-w-lg text-base leading-relaxed text-ink-dim dark:text-paper/80 xl:text-lg reveal-up" data-hero-tag>
+          I'm Chris. I build stuff &mdash; marketing automation, voice AI,
+          AI video, AI music, plus a dating app on the side. Once a week
+          I write up what I tried, what broke, and the tools I'd pay for again.
+        </p>
+      </div>
+
+      <form id="hero-form" class="reveal-up flex w-full max-w-lg flex-col gap-3" data-hero-tag>
+        <label class="sr-only" for="hero-email">Email address</label>
+        <div class="flex flex-col gap-3 border border-ink/15 bg-paper-soft p-1.5 dark:border-paper/15 dark:bg-ink/40 sm:flex-row sm:items-stretch sm:gap-0">
+          <input
+            id="hero-email"
+            type="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@yourcompany.com"
+            class="flex-1 bg-transparent px-4 py-3 font-mono text-sm text-ink placeholder:text-ink-faint focus:outline-none dark:text-paper dark:placeholder:text-paper/40"
+          />
+          <button
+            type="submit"
+            class="btn-rust border border-rust bg-paper px-5 py-3 font-mono text-xs uppercase tracking-[0.22em] text-rust dark:bg-transparent"
+          >
+            <span>Get the letter →</span>
+          </button>
+        </div>
+        <p id="hero-status" class="min-h-[1rem] font-mono text-[0.65rem] uppercase tracking-[0.22em] text-ink-faint" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const eyebrow = document.querySelectorAll<HTMLElement>("[data-hero-eyebrow]");
+  const lines = document.querySelectorAll<HTMLElement>("[data-hero-line]");
+  const tags = document.querySelectorAll<HTMLElement>("[data-hero-tag]");
+  const loud = document.querySelector<HTMLElement>("[data-hero-loud]");
+
+  if (!reduce) {
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    tl.fromTo(eyebrow, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9 }, 0.1);
+    tl.fromTo(lines, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.12 }, 0.25);
+    tl.fromTo(tags, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, "-=0.45");
+
+    // Scroll-driven WIN LOUD pull — letters scale up as user scrolls
+    if (loud) {
+      gsap.to(loud, {
+        scale: 1.05,
+        ease: "none",
+        scrollTrigger: {
+          trigger: loud,
+          start: "top 80%",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      });
+    }
+  }
+
+  // Magnetic CTA hover
+  const btn = document.querySelector<HTMLButtonElement>("#hero-form button");
+  if (btn && !reduce) {
+    btn.classList.add("magnetic");
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.18;
+      const y = (e.clientY - r.top - r.height / 2) * 0.18;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
+  }
+
+  // Form submit
+  const form = document.getElementById("hero-form") as HTMLFormElement | null;
+  const status = document.getElementById("hero-status");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!status) return;
+    const data = new FormData(form);
+    const email = (data.get("email") || "").toString().trim();
+    if (!email) return;
+    status.textContent = "Sending…";
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        status.textContent = "● Saved. Check your inbox in a sec.";
+        form.reset();
+      } else {
+        const body = await res.json().catch(() => ({}));
+        status.textContent = body.error || "Couldn't save. Try again in a minute.";
+      }
+    } catch {
+      status.textContent = "Network blocked. Check your connection.";
+    }
+  });
+</script>

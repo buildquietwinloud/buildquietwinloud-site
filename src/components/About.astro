@@ -1,0 +1,99 @@
+---
+const stats = [
+  { num: "$2M+", label: "Solo, under 2 years" },
+  { num: "06", label: "Projects running now" },
+  { num: "00", label: "Years of formal CS school" },
+  { num: "17+", label: "Years building businesses" },
+];
+---
+
+<section id="work" class="relative w-full px-6 py-24 sm:px-10 sm:py-32 lg:px-16 xl:px-24 2xl:px-32">
+  <div class="mx-auto grid max-w-[1680px] grid-cols-12 gap-6">
+    <div class="col-span-12 sm:col-span-3">
+      <span class="eyebrow flex items-center gap-3 reveal-up" data-about-eyebrow>
+        <span class="inline-block h-px w-10 bg-rust"></span>
+        About
+      </span>
+    </div>
+    <div class="col-span-12 sm:col-span-9 space-y-8">
+      <p class="font-editorial text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.15] tracking-[-0.015em] text-ink dark:text-paper reveal-up" data-about-line>
+        I never finished high school. Left after ninth grade.
+        Learned to ship by shipping.
+      </p>
+      <p class="font-editorial text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.15] tracking-[-0.015em] text-ink dark:text-paper reveal-up" data-about-line>
+        Built a call center from scratch with Go High Level, Twilio,
+        and custom automations. Solo. Cleared $2M in under two years
+        before life knocked it down. Rebuilt from the ground up.
+      </p>
+      <p class="font-editorial text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.15] tracking-[-0.015em] text-ink dark:text-paper reveal-up" data-about-line>
+        Now I run six projects across marketing automation, voice AI,
+        AI video, AI music, and a dating app I'm building on the side.
+        Mostly client work, plus my own bets. Bilingual. Raised in
+        the US, based in Mexico. Builder by trade, outsider by choice.
+      </p>
+
+      <div class="reveal-up grid grid-cols-2 gap-6 border-t border-rule pt-10 dark:border-paper/15 sm:grid-cols-4 sm:gap-10" data-about-line>
+        {stats.map((s) => (
+          <div>
+            <div class="font-display text-4xl text-rust sm:text-5xl xl:text-6xl" data-about-stat data-num={s.num}>{s.num}</div>
+            <div class="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-ink-faint sm:text-[0.7rem]">{s.label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="reveal-up flex flex-col gap-4 border-t border-rule pt-8 sm:flex-row sm:items-baseline sm:justify-between dark:border-paper/15" data-about-line>
+        <p class="font-editorial-italic text-2xl text-rust sm:text-3xl">
+          The letter's free. The 1:1 calls, when they open, won't be.
+        </p>
+        <span class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">— Chris Perales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const els = document.querySelectorAll<HTMLElement>("[data-about-eyebrow], [data-about-line]");
+  const stats = document.querySelectorAll<HTMLElement>("[data-about-stat]");
+
+  if (!reduce) {
+    els.forEach((el, i) => {
+      gsap.fromTo(el, { opacity: 0, y: 28 }, {
+        opacity: 1, y: 0, duration: 1.0, delay: i * 0.08, ease: "expo.out", immediateRender: false,
+        scrollTrigger: { trigger: el, start: "top 88%" },
+      });
+    });
+
+    // Number ticker on scroll-into-view
+    stats.forEach((el) => {
+      const target = el.getAttribute("data-num") || "";
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 90%",
+        once: true,
+        onEnter: () => {
+          // pull the numeric portion
+          const match = target.match(/(\d+)/);
+          if (!match) return;
+          const finalN = parseInt(match[1], 10);
+          const prefix = target.startsWith("$") ? "$" : "";
+          const suffix = target.endsWith("M+") ? "M+" : target.endsWith("+") ? "+" : "";
+          const obj = { n: 0 };
+          gsap.to(obj, {
+            n: finalN,
+            duration: 1.4,
+            ease: "expo.out",
+            onUpdate: () => {
+              const v = Math.round(obj.n);
+              el.textContent = prefix + (target.startsWith("0") && v < 10 ? "0" + v : v) + suffix;
+            },
+          });
+        },
+      });
+    });
+  }
+</script>

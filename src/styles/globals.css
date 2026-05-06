@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #0a0a0a;
+  --color-paper-dim: #141414;
+  --color-paper-soft: #1a1a1a;
+  --color-ink: #f5f2ea;
+  --color-ink-dim: #b8b5ad;
+  --color-ink-faint: #6e6c66;
+  --color-rust: #00d4ff;
+  --color-rust-dim: #00a0c8;
+  --color-rust-soft: rgba(0, 212, 255, 0.18);
+  --color-rule: #2a2a2a;
+  --color-rule-soft: #1f1f1f;
+
+  --font-display: "Anton", "Oswald", "Impact", sans-serif;
+  --font-editorial: "Fraunces", "Iowan Old Style", "Times New Roman", serif;
+  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+html, body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-rust);
+  color: var(--color-paper);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+}
+
+/* paper grain — subtle, no SVG fetch */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(rgba(245, 242, 234, 0.025) 1px, transparent 1px),
+    radial-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  font-variation-settings: "SOFT" 30, "WONK" 0, "opsz" 144;
+}
+
+.font-editorial-italic {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1.05;
+  font-variation-settings: "SOFT" 25, "WONK" 0, "opsz" 144;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.bracket {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+.bracket::before {
+  content: "[ ";
+  color: var(--color-ink-faint);
+}
+.bracket::after {
+  content: " ]";
+  color: var(--color-ink-faint);
+}
+
+.rule {
+  background: var(--color-rule);
+  height: 1px;
+  width: 100%;
+}
+
+/* Default visible. GSAP scripts use immediateRender:false + fromTo to animate IN
+   if ScrollTrigger fires. If GSAP fails or trigger doesn't fire, content stays visible. */
+.reveal-up {
+  opacity: 1;
+  transform: none;
+  will-change: transform, opacity;
+}
+
+.reveal-letter {
+  display: inline-block;
+  opacity: 1;
+  transform: none;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-letter {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
+.magnetic {
+  transition: transform 0.45s var(--ease-quart-out);
+}
+
+.btn-rust {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s var(--ease-quart-out);
+}
+.btn-rust::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-rust);
+  transform: translateY(101%);
+  transition: transform 0.5s var(--ease-expo-out);
+  z-index: 0;
+}
+.btn-rust:hover::after {
+  transform: translateY(0);
+}
+.btn-rust > span {
+  position: relative;
+  z-index: 1;
+}
+.btn-rust:hover {
+  color: var(--color-paper);
+}

@@ -1,0 +1,54 @@
+---
+const tools = [
+  "Claude Code",
+  "Make.com",
+  "GoHighLevel",
+  "VAPI",
+  "Supabase",
+  "ComfyUI",
+  "Lovable",
+  "Cursor",
+  "ElevenLabs",
+  "Segmind",
+  "Remotion",
+  "n8n",
+  "Telegram Bot API",
+  "Cloudflare Pages",
+  "Resend",
+  "Beehiiv",
+];
+const row = [...tools, ...tools];
+---
+
+<section class="relative w-full overflow-hidden border-y border-rule py-6 dark:border-paper/10" data-marquee-section>
+  <div class="flex items-center gap-12 whitespace-nowrap" data-marquee>
+    {row.map((tool) => (
+      <span class="group flex items-center gap-12 font-mono text-xs uppercase tracking-[0.22em] text-ink-dim dark:text-paper/60">
+        <span class="transition-colors duration-300 hover:text-rust">{tool}</span>
+        <span class="text-rust transition-transform duration-300">●</span>
+      </span>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    const m = document.querySelector<HTMLElement>("[data-marquee]");
+    const wrap = document.querySelector<HTMLElement>("[data-marquee-section]");
+    if (m && wrap) {
+      const w = m.scrollWidth / 2;
+      const tween = gsap.to(m, {
+        x: -w,
+        duration: 60,
+        ease: "none",
+        repeat: -1,
+      });
+
+      // Slow on hover
+      wrap.addEventListener("mouseenter", () => gsap.to(tween, { timeScale: 0.25, duration: 0.5 }));
+      wrap.addEventListener("mouseleave", () => gsap.to(tween, { timeScale: 1, duration: 0.5 }));
+    }
+  }
+</script>
