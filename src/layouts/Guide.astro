@@ -1,0 +1,178 @@
+---
+import Base from "./Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  tier: string;
+  eta: string;
+  published: string;
+}
+
+const { title, description, tier, eta, published } = Astro.props;
+---
+
+<Base title={`${title} — Build Quiet, Win Loud`} description={description}>
+  <SmoothScroll />
+  <Header />
+  <main class="relative z-10 px-6 py-20 sm:px-10 sm:py-28 lg:px-16 xl:px-24 2xl:px-32">
+    <div class="mx-auto max-w-[820px]">
+      <a
+        href="/guides"
+        class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint hover:text-rust transition-colors duration-300"
+      >
+        ← All guides
+      </a>
+
+      <header class="mt-10 border-b border-rule pb-10">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-ink-faint">
+          <span class="text-rust">{tier}</span>
+          <span>{eta}</span>
+          <span>Published · {published}</span>
+        </div>
+        <h1 class="font-display mt-6 text-[clamp(2.6rem,6vw,5rem)] leading-[0.92] text-ink">
+          {title}
+        </h1>
+        <p class="mt-6 font-editorial-italic text-xl text-ink-dim sm:text-2xl">
+          {description}
+        </p>
+      </header>
+
+      <article class="prose-bqwl mt-12">
+        <slot />
+      </article>
+
+      <footer class="mt-20 border-t border-rule pt-10">
+        <p class="font-editorial-italic text-2xl text-rust">
+          If this helped, the weekly letter drops one of these every week.
+        </p>
+        <a
+          href="/#letter"
+          class="mt-6 inline-block btn-rust border border-rust bg-paper px-6 py-3 font-mono text-xs uppercase tracking-[0.22em] text-rust"
+        >
+          <span>Get the letter →</span>
+        </a>
+      </footer>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style is:global>
+  .prose-bqwl {
+    color: var(--color-ink);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-family: var(--font-body);
+  }
+  .prose-bqwl > * + * {
+    margin-top: 1.4em;
+  }
+  .prose-bqwl h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.005em;
+    color: var(--color-ink);
+    margin-top: 3em;
+    margin-bottom: 0.6em;
+    text-transform: uppercase;
+  }
+  .prose-bqwl h3 {
+    font-family: var(--font-editorial);
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    line-height: 1.15;
+    color: var(--color-ink);
+    margin-top: 2.2em;
+    margin-bottom: 0.4em;
+  }
+  .prose-bqwl p {
+    color: var(--color-ink);
+    max-width: 68ch;
+  }
+  .prose-bqwl a {
+    color: var(--color-rust);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .prose-bqwl a:hover {
+    text-decoration-thickness: 2px;
+  }
+  .prose-bqwl strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .prose-bqwl em {
+    color: var(--color-ink);
+    font-style: italic;
+    font-family: var(--font-editorial);
+  }
+  .prose-bqwl ul, .prose-bqwl ol {
+    padding-left: 1.4em;
+    color: var(--color-ink);
+  }
+  .prose-bqwl ul { list-style: none; }
+  .prose-bqwl ul > li {
+    position: relative;
+    padding-left: 1.2em;
+    margin-top: 0.6em;
+  }
+  .prose-bqwl ul > li::before {
+    content: "→";
+    color: var(--color-rust);
+    position: absolute;
+    left: 0;
+  }
+  .prose-bqwl ol > li {
+    margin-top: 0.6em;
+  }
+  .prose-bqwl blockquote {
+    border-left: 2px solid var(--color-rust);
+    padding-left: 1.4em;
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--color-ink);
+    margin: 2em 0;
+  }
+  .prose-bqwl code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--color-paper-soft);
+    border: 1px solid var(--color-rule);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+  .prose-bqwl pre {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: var(--color-paper-soft);
+    border: 1px solid var(--color-rule);
+    padding: 1.2em 1.4em;
+    overflow-x: auto;
+    border-radius: 3px;
+  }
+  .prose-bqwl pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .prose-bqwl hr {
+    border: none;
+    border-top: 1px solid var(--color-rule);
+    margin: 3em 0;
+  }
+  .prose-bqwl .pull {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+    line-height: 1.05;
+    color: var(--color-rust);
+    margin: 2em 0;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+</style>

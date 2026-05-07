@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="404 — Build Quiet, Win Loud"
+  description="This page doesn't exist (yet)."
+>
+  <main class="relative z-10 flex min-h-svh w-full flex-col items-center justify-center px-6 sm:px-10">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="bracket">Error 404</span>
+
+      <h1 class="font-display mt-8 text-[clamp(5rem,18vw,15rem)] leading-[0.86] text-ink">
+        NOT<br /><span class="text-rust">HERE.</span>
+      </h1>
+
+      <p class="mt-12 max-w-md mx-auto font-editorial text-2xl leading-tight text-ink-dim sm:text-3xl">
+        That page either moved, never existed, or hasn't shipped yet.
+      </p>
+
+      <p class="mt-6 max-w-md mx-auto text-base leading-relaxed text-ink-dim">
+        Most likely cause: I haven't built it. Try the homepage.
+      </p>
+
+      <div class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href="/"
+          class="btn-rust border border-rust bg-paper px-7 py-4 font-mono text-xs uppercase tracking-[0.22em] text-rust"
+        >
+          <span>← Back home</span>
+        </a>
+        <a
+          href="/now"
+          class="font-mono text-xs uppercase tracking-[0.22em] text-ink-faint hover:text-rust transition-colors duration-300"
+        >
+          Or see what I'm building →
+        </a>
+      </div>
+    </div>
+  </main>
+</Base>

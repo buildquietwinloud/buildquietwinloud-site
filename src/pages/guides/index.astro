@@ -1,0 +1,123 @@
+---
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import SmoothScroll from "../../components/SmoothScroll.astro";
+
+const guides = [
+  {
+    slug: "start-here",
+    n: "01",
+    tier: "Entry",
+    title: "AI Without the Bullshit",
+    subtitle: "Where to start when everyone's yelling at you.",
+    status: "Live",
+    eta: "~12 min read",
+    gist: "If you opened ChatGPT last month and feel behind, you're not. Here's what actually matters, what to skip, and where to start without spending a dollar.",
+  },
+  {
+    slug: "built-this-site",
+    n: "02",
+    tier: "Meta",
+    title: "How I Built buildquietwinloud.com in 4 Hours",
+    subtitle: "Open source. Astro + Cloudflare + Beehiiv. $0 / month.",
+    status: "Soon",
+    eta: "~15 min read",
+    gist: "I cancelled my Lovable subscription. The full stack, the cost breakdown, the GitHub repo, and what I'd do differently if I started over.",
+  },
+  {
+    slug: "ai-stack-2026",
+    n: "03",
+    tier: "Operator",
+    title: "My 2026 AI Stack",
+    subtitle: "Every tool I run, what it costs, and what I'd swap.",
+    status: "Coming",
+    eta: "~20 min read",
+    gist: "Claude Code, Make.com, VAPI, ComfyUI, GoHighLevel, Segmind, ElevenLabs. Per tool: monthly cost, real use case, alternatives if you're on a budget.",
+  },
+];
+---
+
+<Base
+  title="Guides — Build Quiet, Win Loud"
+  description="Honest, beginner-friendly guides on AI for builders who didn't go to school for this."
+>
+  <SmoothScroll />
+  <Header />
+  <main class="relative z-10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 xl:px-24 2xl:px-32">
+    <div class="mx-auto max-w-[1400px]">
+      <span class="bracket">Guides</span>
+
+      <h1 class="font-display mt-8 text-[clamp(3.6rem,11vw,11rem)] leading-[0.88] text-ink">
+        FREE<br /><span class="text-rust">GUIDES.</span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl font-editorial text-2xl leading-tight text-ink-dim sm:text-3xl">
+        Honest, beginner-welcome guides on AI for builders who didn't go to school for this.
+        No gatekeeping, no jargon flex, no clickbait math.
+      </p>
+
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-ink-dim">
+        I'll write a guide when the topic deserves a long answer.
+        I won't pad. If a guide is short, that's because the topic was short.
+      </p>
+
+      <ul class="mt-20 divide-y divide-rule border-y border-rule">
+        {guides.map((g) => (
+          <li class="group">
+            {g.status === "Live" ? (
+              <a
+                href={`/guides/${g.slug}`}
+                class="grid grid-cols-12 gap-4 py-10 transition-colors duration-500 hover:bg-paper-soft sm:py-12"
+              >
+                <div class="col-span-2 sm:col-span-1">
+                  <span class="font-mono text-xs uppercase tracking-[0.22em] text-rust">/ {g.n}</span>
+                </div>
+                <div class="col-span-10 sm:col-span-7">
+                  <p class="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-ink-faint">{g.tier}</p>
+                  <h2 class="mt-2 font-editorial text-3xl text-ink transition-colors duration-500 group-hover:text-rust sm:text-4xl xl:text-5xl">{g.title}</h2>
+                  <p class="mt-3 font-editorial-italic text-xl text-ink-dim sm:text-2xl">{g.subtitle}</p>
+                  <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-dim">{g.gist}</p>
+                </div>
+                <div class="col-span-12 sm:col-span-4 sm:text-right">
+                  <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-rust">{g.status}</p>
+                  <p class="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{g.eta}</p>
+                  <p class="mt-6 font-mono text-xs uppercase tracking-[0.22em] text-ink group-hover:text-rust transition-colors duration-300">Read →</p>
+                </div>
+              </a>
+            ) : (
+              <div class="grid grid-cols-12 gap-4 py-10 sm:py-12">
+                <div class="col-span-2 sm:col-span-1">
+                  <span class="font-mono text-xs uppercase tracking-[0.22em] text-ink-faint">/ {g.n}</span>
+                </div>
+                <div class="col-span-10 sm:col-span-7">
+                  <p class="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-ink-faint">{g.tier}</p>
+                  <h2 class="mt-2 font-editorial text-3xl text-ink-dim sm:text-4xl xl:text-5xl">{g.title}</h2>
+                  <p class="mt-3 font-editorial-italic text-xl text-ink-faint sm:text-2xl">{g.subtitle}</p>
+                  <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-faint">{g.gist}</p>
+                </div>
+                <div class="col-span-12 sm:col-span-4 sm:text-right">
+                  <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{g.status}</p>
+                  <p class="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{g.eta}</p>
+                </div>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-20 border-t border-rule pt-10">
+        <p class="font-editorial-italic text-2xl text-rust sm:text-3xl">
+          The letter drops a new piece every week. Guides drop when something's worth a longer answer.
+        </p>
+        <a
+          href="/#letter"
+          class="mt-6 inline-block font-mono text-xs uppercase tracking-[0.22em] text-ink hover:text-rust transition-colors duration-300"
+        >
+          ← Back home
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

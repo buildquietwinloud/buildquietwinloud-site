@@ -4,12 +4,49 @@ import "../styles/globals.css";
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
 }
+
+const SITE = "https://buildquietwinloud.com";
 
 const {
   title = "Build Quiet, Win Loud — AI tools, real builds, no hype.",
   description = "A weekly letter from Chris Perales, a builder in Guadalajara. What I tried that week, what broke, and the tools I'd pay for again.",
+  canonical,
+  ogImage = "/og-image.png",
+  ogType = "website",
 } = Astro.props;
+
+const canonicalUrl = canonical || (Astro.url ? new URL(Astro.url.pathname, SITE).toString() : SITE);
+const ogImageUrl = ogImage.startsWith("http") ? ogImage : `${SITE}${ogImage}`;
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Chris Perales",
+  alternateName: "Christian Perales",
+  url: SITE,
+  description: "Builder in Guadalajara. AI automation, voice AI, AI video, AI music, and a dating app on the side.",
+  sameAs: [
+    "https://x.com/buildquiet",
+    "https://www.linkedin.com/in/chris-perales",
+    "https://github.com/buildquietwinloud",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Build Quiet, Win Loud",
+  url: SITE,
+  description: "AI tools, real builds, no hype. Weekly letter for builders.",
+  publisher: {
+    "@type": "Person",
+    name: "Chris Perales",
+  },
+};
 ---
 
 <!doctype html>
@@ -19,17 +56,30 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0a" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Chris Perales" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://buildquietwinloud.com" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Build Quiet, Win Loud" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@buildquiet" />
+    <meta name="twitter:creator" content="@buildquiet" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

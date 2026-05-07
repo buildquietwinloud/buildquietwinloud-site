@@ -1,0 +1,242 @@
+---
+import Guide from "../../layouts/Guide.astro";
+---
+
+<Guide
+  title="AI Without the Bullshit"
+  description="Where to start when everyone's yelling at you about AI — and how to spend the next 30 days building something instead of doomscrolling another thread."
+  tier="Tier 01 / Entry"
+  eta="~12 min read"
+  published="May 7, 2026"
+>
+  <p>
+    If you opened ChatGPT last month and feel like the world has already lapped you twice, you haven't.
+    You're standing in front of a noisy crowd and three categories of person are screaming at you.
+    The doomers say it's going to take your job by Christmas. The hypers say you can replace your whole
+    business with one prompt. And the gatekeepers — usually a guy with a $4,000 GPU and a Substack — will
+    tell you that if you can't build your own agent, you're not "really" using AI.
+  </p>
+
+  <p>
+    All three are wrong. (Mostly. There's an asterisk on each one. We'll get to it.)
+  </p>
+
+  <p>
+    Here's the thing nobody trying to sell you a course will say out loud: AI in 2026 is mostly a
+    productivity tool, the same way email was in 2002. You don't need to "master" it. You need to use it
+    for one specific thing this week, see if it saved you time, and decide whether that thing is worth
+    doing again next week. That's it. That's the framework. The rest of this guide is just unpacking why
+    that's the framework, and what specifically to do this week.
+  </p>
+
+  <p class="pull">
+    Stop trying to learn AI. Start trying to ship something with AI.
+  </p>
+
+  <h2>Why everyone's yelling</h2>
+
+  <p>
+    Three groups, three incentive structures. Worth pulling apart, because the noise stops making sense
+    once you see who profits from it.
+  </p>
+
+  <h3>The hypers</h3>
+
+  <p>
+    The people telling you AI will <em>10x your business</em> usually sell either a course, an agency
+    service, or a subscription product whose retention depends on you believing it works. (I'm not saying
+    they're lying. I'm saying their paycheck has an opinion.) The signature move is a screenshot of
+    one prompt that produced one impressive output, with no mention of the seventeen prompts that
+    produced garbage before it. If you're a builder, you already know what survivorship bias looks like.
+    This is just that, with extra emojis.
+  </p>
+
+  <h3>The doomers</h3>
+
+  <p>
+    The people telling you AI is going to take your job (often loudly, on AI-generated platforms) are
+    selling fear, which is — and this is genuinely interesting — the second most valuable currency on
+    the internet after horniness. The trick: if their prediction is right, they were right. If it's
+    wrong, you forgot. The asymmetry is one-way. Treat all undated AI doom predictions as horoscopes
+    that happen to use the word "agentic."
+  </p>
+
+  <h3>The gatekeepers</h3>
+
+  <p>
+    The people telling you that if you can't fine-tune a model or write a Python wrapper, you're not
+    serious — these are mostly engineers who've discovered, to their genuine surprise, that they're
+    suddenly good at marketing. Their asterisk is the hardest to write because they often <em>are</em>
+    excellent at the thing they're showing. But "excellent" and "necessary for you" are different
+    questions. You don't need to weld your own car to drive one. You don't need to build your own LLM
+    to use one well.
+  </p>
+
+  <p>
+    All three groups have one thing in common: they want your attention this week. None of them want
+    you to ship something this week. That's the gap.
+  </p>
+
+  <h2>What actually matters (the short version)</h2>
+
+  <p>
+    Three things. They're embarrassingly simple. They're also what the actually-shipping operators I
+    know spend most of their time on.
+  </p>
+
+  <ol>
+    <li>
+      <strong>Pick one task you do every week that takes more than an hour.</strong> Writing emails. Cleaning
+      a spreadsheet. Drafting client briefs. Naming files. Anything repetitive.
+    </li>
+    <li>
+      <strong>Spend 30 minutes trying to do it with ChatGPT, Claude, or Gemini.</strong> Pick one. They're
+      all good enough. Free tiers work. Paste the messy real version of the task in. See what happens.
+    </li>
+    <li>
+      <strong>Decide if it saved you time. If yes, do it again next week.</strong> That's the loop. It's
+      really that boring. And it's also why people who started boring six months ago are now ahead of
+      you, even though they haven't fine-tuned anything.
+    </li>
+  </ol>
+
+  <p>
+    Most of the gap between "AI is changing everything" and "AI hasn't changed my Tuesday" is exactly
+    that loop. People who run the loop weekly compound. People who watch the threads about the loop
+    don't.
+  </p>
+
+  <h2>Tools, ranked by how much you need them right now</h2>
+
+  <p>
+    I run six concurrent projects. Marketing automation, voice AI, AI video, AI music, a dating app,
+    plus the site you're reading. The tools I touch every day are not the trendy ones. They're the
+    boring ones that do one thing reliably. Here's the honest stack for someone starting today, in the
+    order I'd actually adopt them.
+  </p>
+
+  <h3>Tier 1 — Pick one. Use it daily.</h3>
+
+  <ul>
+    <li>
+      <strong>ChatGPT</strong>, <strong>Claude</strong>, or <strong>Gemini</strong>. Free tier is enough
+      for the first month. Paid tier ($20/mo) makes sense once you're using it 5+ times a day. Don't
+      overthink the choice — switching costs are zero, you can try all three in an afternoon. Most
+      operators I know use Claude for writing and ChatGPT for code, but that's a preference, not a rule.
+    </li>
+  </ul>
+
+  <h3>Tier 2 — Add when Tier 1 stops being enough.</h3>
+
+  <ul>
+    <li>
+      <strong>Make.com</strong> or <strong>n8n</strong> for connecting AI to other tools (Gmail, Slack,
+      your CRM). This is where AI starts saving you 10+ hours a week instead of 30 minutes.
+      Free tier exists. Learning curve: a weekend. Worth it.
+    </li>
+    <li>
+      <strong>Cursor</strong> or <strong>Claude Code</strong> if you write any code, even shell scripts
+      and SQL queries. The leverage here is real and not hype. (Asterisk: this assumes you already
+      write some code occasionally. If not, skip.)
+    </li>
+  </ul>
+
+  <h3>Tier 3 — Specialist tools. Only if your work needs them.</h3>
+
+  <ul>
+    <li>
+      <strong>ElevenLabs</strong> for voice. <strong>Segmind</strong> or <strong>Replicate</strong> for
+      image / video generation. <strong>VAPI</strong> for outbound voice agents. Pay-as-you-go pricing.
+      Don't subscribe to anything until you've used it for an actual job.
+    </li>
+  </ul>
+
+  <p>
+    The honest version of "my 2026 AI stack" is: 80% of my AI work happens in Claude and Make. The other
+    20% is specialist tools per project. If a guide is selling you 47 tools you "need," they're not
+    counting customers, they're counting affiliate clicks.
+  </p>
+
+  <h2>The 30-day plan that actually works</h2>
+
+  <p>
+    If I had to start from zero again — same brain, no audience, 30 minutes a day — this is what I'd do.
+    No course required. No paid product required.
+  </p>
+
+  <p>
+    <strong>Week 1: Use ChatGPT (or Claude) for one real task per day.</strong> Don't try to learn it.
+    Use it. The task should be something you'd already be doing — drafting an email, summarizing a
+    meeting, naming a project. The point isn't to be impressed by the output. The point is to learn
+    where it helps and where it gets in your way.
+  </p>
+
+  <p>
+    <strong>Week 2: Pick one task that worked and try to do it 5x faster.</strong> Better prompts. Save
+    a template. Maybe paste in a previous email as an example. The skill you're building isn't "AI
+    expertise." It's editing-by-example. That's it.
+  </p>
+
+  <p>
+    <strong>Week 3: Connect it to one other tool you already use.</strong> Make.com or Zapier. Auto-draft
+    a reply when an email hits a specific label. Auto-summarize a meeting transcript when it lands in
+    Drive. Pick the smallest version of "AI talking to another tool" you can imagine, and build that one.
+  </p>
+
+  <p>
+    <strong>Week 4: Write down what worked.</strong> A doc, a thread, a private note. Doesn't matter.
+    The act of writing it down forces you to remember the loop. People who wrote down what worked in
+    Week 4 are running the loop forever. People who didn't, aren't.
+  </p>
+
+  <p class="pull">
+    Four weeks. One task per week. That's the whole thing.
+  </p>
+
+  <h2>What to skip (for now)</h2>
+
+  <p>
+    A non-exhaustive list of stuff that's getting attention but doesn't deserve yours yet:
+  </p>
+
+  <ul>
+    <li>
+      <strong>"Build your own agent."</strong> The actual market for AI agents in 2026 is somewhere
+      between "interesting demos" and "production-grade", with very few exceptions. Wait six months.
+      The good ones will be obvious.
+    </li>
+    <li>
+      <strong>Fine-tuning your own model.</strong> If you have to ask whether you need to, you don't.
+    </li>
+    <li>
+      <strong>Hiring a "Chief AI Officer."</strong> If your business is under 50 people, you need one
+      person who runs the loop weekly and shares findings. That's it.
+    </li>
+    <li>
+      <strong>The 47-tool stack a YouTuber recommended.</strong> Pick three. Run them for a month.
+      Cancel two. Then add a new one. Compounding works the same way for software subscriptions as it
+      does for everything else.
+    </li>
+  </ul>
+
+  <h2>The honest part</h2>
+
+  <p>
+    I'm not a developer. I never finished high school — I left after ninth grade, which my parents
+    were not thrilled about. I learned every tool in my stack by trying it on a real problem, getting
+    confused, asking a model to explain it like I was twelve, and then trying again. The thing nobody
+    tells you about AI right now is that the cheat code <em>is</em> "ask a model to explain it like
+    you're twelve." That's it. That's the secret. There's no priesthood. There's just the loop, and
+    whether you're running it.
+  </p>
+
+  <p>
+    If you read this whole thing and you only do one thing this week, do this: pick one task you'd
+    normally do alone, do it with Claude or ChatGPT instead, and decide if it was faster. Then do it
+    again on Tuesday.
+  </p>
+
+  <p>
+    That's everything. The rest is just letters from the field.
+  </p>
+</Guide>

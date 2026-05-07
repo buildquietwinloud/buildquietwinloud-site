@@ -3,32 +3,37 @@ const lanes = [
   {
     n: "01",
     title: "The weekly letter",
-    status: "Live now",
+    status: "Live",
+    href: "/#letter",
     body: "What I built that week, the configs, the actual cost numbers. The good and the broken.",
   },
   {
     n: "02",
-    title: "Tool reviews",
-    status: "Live now",
-    body: "What I run, what I dropped after a month, what I haven't touched and why.",
-  },
-  {
-    n: "03",
     title: "Free starter guides",
-    status: "Soon",
+    status: "Live",
+    href: "/guides",
     body: "AI for people who didn't go to school for this. No gatekeeping, no jargon flex.",
   },
   {
+    n: "03",
+    title: "What I'm building now",
+    status: "Live",
+    href: "/now",
+    body: "Snapshot of what I'm spending hours on this week. Updated when the work changes.",
+  },
+  {
     n: "04",
-    title: "1:1 build calls",
-    status: "Coming",
-    body: "Stuck on something? You'll be able to grab time on my calendar. Probably Q3.",
+    title: "Tool reviews",
+    status: "Soon",
+    href: null,
+    body: "What I run, what I dropped after a month, what I haven't touched and why.",
   },
   {
     n: "05",
-    title: "A builder space",
-    status: "Maybe",
-    body: "If enough of you show up, we open a Discord. If not, no harm done.",
+    title: "1:1 build calls",
+    status: "Coming",
+    href: null,
+    body: "Stuck on something? You'll be able to grab time on my calendar. Probably Q3.",
   },
 ];
 ---
@@ -45,23 +50,42 @@ const lanes = [
 
     <ul class="mt-2">
       {lanes.map((l) => (
-        <li
-          class="reveal-up group relative grid grid-cols-12 gap-4 border-b border-rule py-8 transition-colors duration-500 sm:py-10 hover:bg-paper-soft"
-          data-lane
-        >
-          <span class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-rust transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"></span>
-          <div class="col-span-2 sm:col-span-1">
-            <span class="font-mono text-xs uppercase tracking-[0.22em] text-rust transition-transform duration-500 group-hover:translate-x-1">/ {l.n}</span>
-          </div>
-          <div class="col-span-10 sm:col-span-5">
-            <h3 class="font-editorial text-3xl text-ink sm:text-4xl xl:text-5xl transition-colors duration-500 group-hover:text-rust">{l.title}</h3>
-          </div>
-          <div class="col-span-2 sm:col-span-2">
-            <span class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{l.status}</span>
-          </div>
-          <div class="col-span-10 sm:col-span-4">
-            <p class="text-base leading-relaxed text-ink-dim xl:text-lg">{l.body}</p>
-          </div>
+        <li class="reveal-up" data-lane>
+          {l.href ? (
+            <a
+              href={l.href}
+              class="group relative grid grid-cols-12 gap-4 border-b border-rule py-8 transition-colors duration-500 sm:py-10 hover:bg-paper-soft"
+            >
+              <span class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-rust transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"></span>
+              <div class="col-span-2 sm:col-span-1">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-rust transition-transform duration-500 group-hover:translate-x-1">/ {l.n}</span>
+              </div>
+              <div class="col-span-10 sm:col-span-5">
+                <h3 class="font-editorial text-3xl text-ink sm:text-4xl xl:text-5xl transition-colors duration-500 group-hover:text-rust">{l.title}</h3>
+              </div>
+              <div class="col-span-2 sm:col-span-2">
+                <span class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-rust">{l.status}</span>
+              </div>
+              <div class="col-span-10 sm:col-span-4">
+                <p class="text-base leading-relaxed text-ink-dim xl:text-lg">{l.body}</p>
+              </div>
+            </a>
+          ) : (
+            <div class="grid grid-cols-12 gap-4 border-b border-rule py-8 sm:py-10">
+              <div class="col-span-2 sm:col-span-1">
+                <span class="font-mono text-xs uppercase tracking-[0.22em] text-ink-faint">/ {l.n}</span>
+              </div>
+              <div class="col-span-10 sm:col-span-5">
+                <h3 class="font-editorial text-3xl text-ink-dim sm:text-4xl xl:text-5xl">{l.title}</h3>
+              </div>
+              <div class="col-span-2 sm:col-span-2">
+                <span class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{l.status}</span>
+              </div>
+              <div class="col-span-10 sm:col-span-4">
+                <p class="text-base leading-relaxed text-ink-faint xl:text-lg">{l.body}</p>
+              </div>
+            </div>
+          )}
         </li>
       ))}
     </ul>

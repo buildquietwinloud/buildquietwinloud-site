@@ -1,0 +1,112 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+
+const lastUpdated = "2026-05-07";
+
+const buildingNow = [
+  {
+    title: "Build Quiet, Win Loud",
+    where: "this site, plus the weekly letter",
+    note: "Issue 00 in draft. Beehiiv wired. Live as of last week.",
+  },
+  {
+    title: "RMG outbound voice AI",
+    where: "client work",
+    note: "VAPI + Make.com + GoHighLevel. Six weeks in. Pickup → live conversion at 2-3%.",
+  },
+  {
+    title: "Specimens Show",
+    where: "AI video pipeline experiment",
+    note: "Episodes generated end-to-end with Segmind + ElevenLabs + Lyria + Remotion. Costs $1.85 per episode.",
+  },
+  {
+    title: "Dating app",
+    where: "side project, private",
+    note: "Building solo. Closed beta later this year.",
+  },
+];
+
+const reading = [
+  "Bits About Money — Patrick McKenzie",
+  "The Almanack of Naval Ravikant",
+  "Anything new from Simon Willison's blog",
+];
+
+const lifeContext = [
+  "Based in Guadalajara",
+  "Building toward SE Asia later this year",
+  "Bilingual, raised in the US, rebuilt in Mexico",
+];
+---
+
+<Base
+  title="Now — Build Quiet, Win Loud"
+  description="What Chris Perales is building, reading, and thinking about right now."
+>
+  <SmoothScroll />
+  <Header />
+  <main class="relative z-10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 xl:px-24 2xl:px-32">
+    <div class="mx-auto max-w-[1200px]">
+      <span class="bracket">Now</span>
+
+      <h1 class="font-display mt-8 text-[clamp(3.6rem,9vw,8rem)] leading-[0.92] text-ink">
+        WHAT I'M<br /><span class="text-rust">BUILDING</span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl font-editorial text-2xl leading-tight text-ink-dim">
+        A snapshot of where I'm spending hours this week.
+        Inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener" class="text-rust underline-offset-4 hover:underline">Derek Sivers' /now movement</a>.
+      </p>
+
+      <p class="mt-4 font-mono text-xs uppercase tracking-[0.22em] text-ink-faint">
+        Last updated · {lastUpdated}
+      </p>
+
+      <div class="mt-20 grid gap-12 sm:grid-cols-12 sm:gap-10">
+        <section class="sm:col-span-12">
+          <span class="bracket">Building</span>
+          <ul class="mt-8 divide-y divide-rule">
+            {buildingNow.map((item) => (
+              <li class="grid grid-cols-12 gap-4 py-6 sm:py-8">
+                <div class="col-span-12 sm:col-span-5">
+                  <h3 class="font-editorial text-2xl text-ink sm:text-3xl">{item.title}</h3>
+                  <p class="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-rust">{item.where}</p>
+                </div>
+                <p class="col-span-12 text-base leading-relaxed text-ink-dim sm:col-span-7">{item.note}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="sm:col-span-7">
+          <span class="bracket">Reading</span>
+          <ul class="mt-8 space-y-3">
+            {reading.map((book) => (
+              <li class="font-editorial text-xl text-ink">{book}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="sm:col-span-5">
+          <span class="bracket">Life</span>
+          <ul class="mt-8 space-y-3">
+            {lifeContext.map((line) => (
+              <li class="font-editorial text-xl text-ink">{line}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <div class="mt-24 border-t border-rule pt-10">
+        <p class="font-editorial-italic text-2xl text-rust sm:text-3xl">
+          This page changes when my work changes. If it's been a month and nothing here is new, hold me to it.
+        </p>
+        <p class="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">— Chris</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>
