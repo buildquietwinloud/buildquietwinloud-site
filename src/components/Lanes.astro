@@ -35,7 +35,7 @@ const lanes = [
 
 <section id="letter" class="relative w-full px-6 py-24 sm:px-10 sm:py-32 lg:px-16 xl:px-24 2xl:px-32">
   <div class="mx-auto max-w-[1680px]">
-    <div class="flex items-end justify-between border-b border-rule pb-6 dark:border-paper/15">
+    <div class="flex items-end justify-between border-b border-rule pb-6">
       <span class="eyebrow flex items-center gap-3 reveal-up" data-lanes-eyebrow>
         <span class="inline-block h-px w-10 bg-rust"></span>
         What's here
@@ -46,7 +46,7 @@ const lanes = [
     <ul class="mt-2">
       {lanes.map((l) => (
         <li
-          class="reveal-up group relative grid grid-cols-12 gap-4 border-b border-rule py-8 transition-colors duration-500 dark:border-paper/10 sm:py-10 hover:bg-paper-soft dark:hover:bg-ink/40"
+          class="reveal-up group relative grid grid-cols-12 gap-4 border-b border-rule py-8 transition-colors duration-500 sm:py-10 hover:bg-paper-soft"
           data-lane
         >
           <span class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-rust transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"></span>
@@ -54,13 +54,13 @@ const lanes = [
             <span class="font-mono text-xs uppercase tracking-[0.22em] text-rust transition-transform duration-500 group-hover:translate-x-1">/ {l.n}</span>
           </div>
           <div class="col-span-10 sm:col-span-5">
-            <h3 class="font-editorial text-3xl text-ink dark:text-paper sm:text-4xl xl:text-5xl transition-colors duration-500 group-hover:text-rust">{l.title}</h3>
+            <h3 class="font-editorial text-3xl text-ink sm:text-4xl xl:text-5xl transition-colors duration-500 group-hover:text-rust">{l.title}</h3>
           </div>
           <div class="col-span-2 sm:col-span-2">
             <span class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-faint">{l.status}</span>
           </div>
           <div class="col-span-10 sm:col-span-4">
-            <p class="text-base leading-relaxed text-ink-dim dark:text-paper/80 xl:text-lg">{l.body}</p>
+            <p class="text-base leading-relaxed text-ink-dim xl:text-lg">{l.body}</p>
           </div>
         </li>
       ))}
