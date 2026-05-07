@@ -1,0 +1,309 @@
+---
+import Guide from "../../layouts/Guide.astro";
+---
+
+<Guide
+  title="How I Built buildquietwinloud.com in 4 Hours"
+  description="The exact stack, the cost breakdown, and the open-source repo. I cancelled my Lovable subscription and built this site over a weekend with Claude Code doing most of the typing. Here's how."
+  tier="Tier 03 / Meta"
+  eta="~16 min read"
+  published="May 7, 2026"
+>
+  <p>
+    I had a Lovable subscription. It's $25/month. It does what it says on the tin — you describe a site,
+    it generates one. Hosted, deployed, easy. For most people, it's a perfectly reasonable answer.
+  </p>
+
+  <p>
+    I cancelled it last weekend. Built this site you're reading instead. Took about four hours of focused
+    work, spread across two evenings. Costs me $0/month to keep running. The full source is in a
+    <a href="https://github.com/buildquietwinloud/buildquietwinloud-site" target="_blank" rel="noopener">public GitHub repo</a>.
+    You can fork it, copy it, study it, ignore it.
+  </p>
+
+  <p>
+    This guide is the build log. The stack, the cost, the actual hours, what Claude Code did vs what I
+    did, and what I'd change if I started over. If you're paying for a no-code site builder right now and
+    you're at all curious whether you could do this yourself — read on. The answer is probably yes, and
+    it's probably less work than you think.
+  </p>
+
+  <p class="pull">
+    Four hours. $0/month. Open source. Same toolchain professional studios use.
+  </p>
+
+  <h2>The honest definition of "4 hours"</h2>
+
+  <p>
+    Active focused build time was about four hours. Wall-clock elapsed time was a weekend. The reason for
+    the gap is important and worth explaining: I was running Claude Code inside one project while doing
+    other work in other terminals — RMG client work, Specimens Show edits, replying to messages. I'd
+    spin up a session, give Claude a task, and tab out for fifteen minutes while it worked.
+  </p>
+
+  <p>
+    So when I say "four hours," I mean: if you sat down with the same toolchain and didn't tab out, you
+    could plausibly ship a comparable site in a single afternoon. It is not "I cleared my calendar for a
+    weekend." It is "I let the AI do most of the typing in the background." Different thing.
+  </p>
+
+  <h2>The full stack (with the boring stuff included)</h2>
+
+  <p>
+    Tech press loves to make stack reveals sound complicated. They are not complicated. Here is everything
+    that powers this site.
+  </p>
+
+  <h3>The site itself</h3>
+
+  <ul>
+    <li>
+      <strong><a href="https://astro.build" target="_blank" rel="noopener">Astro</a></strong> — the
+      framework that builds the HTML pages. Open source. Free. Static-first, which means it generates
+      plain HTML files that load instantly. If you've heard of Next.js, Astro is its quieter cousin who
+      doesn't make you fight a build system.
+    </li>
+    <li>
+      <strong><a href="https://tailwindcss.com" target="_blank" rel="noopener">Tailwind CSS</a></strong>
+      — for styling. Utility-first, which means you write classes like <code>bg-paper text-ink</code>
+      instead of CSS files. Fast to write, easy to read, hard to break. Free.
+    </li>
+    <li>
+      <strong><a href="https://gsap.com" target="_blank" rel="noopener">GSAP</a> +
+      <a href="https://lenis.darkroom.engineering" target="_blank" rel="noopener">Lenis</a></strong>
+      — animation and smooth scroll. The bits that make the page feel alive instead of like a 2014
+      WordPress template. Both free for personal projects.
+    </li>
+    <li>
+      Type: <strong>Anton</strong> (the big sans), <strong>Fraunces</strong> (the editorial serif),
+      <strong>Inter Tight</strong> (body), <strong>JetBrains Mono</strong> (the labels). All from
+      Google Fonts. All free.
+    </li>
+  </ul>
+
+  <h3>The hosting</h3>
+
+  <ul>
+    <li>
+      <strong><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></strong>
+      — where the site lives. Connects to my GitHub repo. Every time I push code, it builds and deploys
+      automatically. Free tier is genuinely generous (unlimited bandwidth, 500 deploys/month). You don't
+      need to upgrade unless you're running an actual app at scale.
+    </li>
+    <li>
+      <strong>Cloudflare Pages Functions</strong> — runs the form backend (the "Get the letter" button).
+      Same Cloudflare account. Same free tier. The function takes the email, sends it to Beehiiv, returns
+      a confirmation. Fewer than 100 lines of code.
+    </li>
+  </ul>
+
+  <h3>The newsletter</h3>
+
+  <ul>
+    <li>
+      <strong><a href="https://www.beehiiv.com" target="_blank" rel="noopener">Beehiiv</a></strong> —
+      where signup emails land. Free up to 2,500 subscribers, which is plenty for the first year of a new
+      newsletter. The form on the site posts to a Beehiiv API, and the email lands in the subscriber list
+      automatically.
+    </li>
+  </ul>
+
+  <h3>The domain</h3>
+
+  <ul>
+    <li>
+      <strong><a href="https://www.namecheap.com" target="_blank" rel="noopener">Namecheap</a></strong>
+      registered <code>buildquietwinloud.com</code> for $13/year. Then I moved the nameservers to
+      Cloudflare so Cloudflare Pages can serve the apex domain natively. Both companies charge $0 for the
+      DNS hosting itself.
+    </li>
+  </ul>
+
+  <h3>The build environment</h3>
+
+  <ul>
+    <li>
+      <strong><a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a></strong>
+      — what I actually built the site in. Wrote the components, wrote the form backend, set up the
+      deployment, debugged the dark-mode bug I shipped on accident. I described, it typed. We iterated.
+      $200/month plan because I use it for everything else too. If this site were the only thing it did,
+      the $20/month tier would have been enough.
+    </li>
+  </ul>
+
+  <h2>The actual cost, monthly and yearly</h2>
+
+  <ul>
+    <li><strong>Domain:</strong> $13 / year (~$1.10 / month)</li>
+    <li><strong>Cloudflare Pages:</strong> $0 / month (free tier)</li>
+    <li><strong>Beehiiv:</strong> $0 / month (free until 2.5K subs)</li>
+    <li><strong>Astro / Tailwind / GSAP / Lenis / fonts:</strong> $0 / month (open source)</li>
+    <li><strong>Claude Code:</strong> $0 incremental — I'd be paying for it anyway. Allocate honestly: ~$5 of one month's subscription went into this site.</li>
+  </ul>
+
+  <p>
+    Total ongoing cost: about <strong>$1.10/month</strong> of domain renewal, amortized.
+  </p>
+
+  <p>
+    For comparison, my old Lovable subscription was <strong>$25/month</strong>. Annual savings:
+    $25 × 12 = $300. Not life-changing money. But the bigger win is what I got <em>in addition to</em> the
+    savings — full code ownership, no vendor lock-in, the ability to do anything Astro can do (which is
+    a lot), and a public repo I can point at as proof.
+  </p>
+
+  <h2>What Claude Code did vs what I did</h2>
+
+  <p>
+    Honest split, by approximate hours:
+  </p>
+
+  <h3>What I actually did myself</h3>
+
+  <ul>
+    <li>
+      <strong>Decided what the site should say.</strong> All the copy was my voice and my opinions, even
+      when Claude wrote the first draft. I edited, rewrote, killed the parts that sounded AI-flavored.
+    </li>
+    <li>
+      <strong>Made the brand decisions.</strong> Color palette, type pairing, "what should the hero
+      actually look like" — I chose between options Claude generated, I didn't let Claude pick.
+    </li>
+    <li>
+      <strong>Reviewed every meaningful change.</strong> Claude proposes, I approve. Especially for
+      anything irreversible (deleting files, deploying, sending data anywhere).
+    </li>
+    <li>
+      <strong>Caught the bugs Claude shipped.</strong> Including one where I locked the site to dark
+      mode but left "dark variant" classes on every component, which made the hero text invisible if
+      your OS was in dark mode. Took me ten minutes to spot. Took Claude two minutes to fix.
+    </li>
+  </ul>
+
+  <h3>What Claude Code did</h3>
+
+  <ul>
+    <li>
+      <strong>All the actual typing.</strong> Component code, animation logic, form handler, build
+      configuration, deployment scripts.
+    </li>
+    <li>
+      <strong>The boring research.</strong> "What's the right way to do X in Astro 6?" Claude searched,
+      read the docs, came back with the answer. I didn't open Stack Overflow once.
+    </li>
+    <li>
+      <strong>The deployment dance.</strong> Cloudflare API calls, GitHub repo creation, secret
+      management, custom domain setup. All of it. I supplied credentials when needed; Claude did the
+      orchestration.
+    </li>
+    <li>
+      <strong>Iteration.</strong> "Make the hero bigger." "No, too big." "Try cyan instead of orange."
+      "Try amber." We went through eight color palettes in fifteen minutes. That kind of speed is the
+      whole point.
+    </li>
+  </ul>
+
+  <p>
+    The pattern: I'm the operator. Claude is the implementer. I make the calls; Claude does the typing.
+    If you've ever managed a junior developer, the workflow will feel familiar — the difference is the
+    junior never gets tired and never charges overtime.
+  </p>
+
+  <h2>What I'd do differently if I started over</h2>
+
+  <h3>Lock the palette before building components</h3>
+
+  <p>
+    I rebuilt the color tokens four times because I kept second-guessing the accent color. Mustard, then
+    pure black/white, then cobalt, then lime, then pink, then red, then finally cyan. Every swap meant
+    Claude had to update tokens across multiple files. If I'd locked the palette first and built second,
+    I'd have saved an hour.
+  </p>
+
+  <h3>Test in dark OS mode early</h3>
+
+  <p>
+    The bug where my hero text went invisible on dark-mode operating systems was entirely caused by
+    leaving Tailwind <code>dark:</code> variants in components after I'd already locked the site to a
+    dark palette. Caught it only when Chris (me) screenshotted the broken site. Lesson: if you're locking
+    a single theme, strip the dark-mode class variants. (Yes, I'm writing this guide in third person at
+    myself. It happens.)
+  </p>
+
+  <h3>Don't drive Cloudflare's dashboard via browser automation</h3>
+
+  <p>
+    Cloudflare's web dashboard has bot detection that defeats Chrome automation tools. We tried to drive
+    the deploy flow via Claude-controlled Chrome and the dashboard never finished loading. The fix: use
+    Wrangler (Cloudflare's CLI) directly. Five minutes of OAuth, then the entire deploy + secrets +
+    custom domain flow runs from the terminal. Don't bother with the browser path if you have CLI access.
+  </p>
+
+  <h2>If you want to build the same thing</h2>
+
+  <p>
+    The repo is public:
+    <a href="https://github.com/buildquietwinloud/buildquietwinloud-site" target="_blank" rel="noopener">
+    github.com/buildquietwinloud/buildquietwinloud-site</a>. Fork it. Strip my copy. Replace the brand.
+    Deploy your own.
+  </p>
+
+  <p>
+    The path looks like this:
+  </p>
+
+  <ol>
+    <li>
+      Install <a href="https://nodejs.org" target="_blank" rel="noopener">Node.js</a> if you don't have it.
+    </li>
+    <li>
+      Install <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a>.
+    </li>
+    <li>
+      Clone the repo. Open it in Claude Code. Tell Claude what brand you want and let it walk you through
+      the rebrand.
+    </li>
+    <li>
+      Sign up for <a href="https://www.beehiiv.com" target="_blank" rel="noopener">Beehiiv</a> (free)
+      and grab your API key + publication ID.
+    </li>
+    <li>
+      Sign up for <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Cloudflare</a>
+      (free) and tell Claude to deploy.
+    </li>
+    <li>
+      Buy a domain at the registrar of your choice. Tell Claude to wire it up.
+    </li>
+  </ol>
+
+  <p>
+    If you get stuck, the next guide in this series will be a more technical walkthrough — but honestly,
+    the meta-trick is to just open Claude Code and ask it to walk you through each step. That's how I did
+    it. There's no reason you can't.
+  </p>
+
+  <h2>One more honest thing</h2>
+
+  <p>
+    Lovable, Webflow, Squarespace, Framer — these are not bad products. If you have $25/month and you'd
+    rather pay for a hosted, no-code, "it just works" site, do that. There's no shame in trading money
+    for time.
+  </p>
+
+  <p>
+    The reason I switched is that I wanted to ship faster than the no-code tools let me, with a stack
+    I can extend in any direction (newsletter archive page, blog, dashboard, login system, paywall, all
+    of it eventually). And I wanted the source code to be public, because the source code is part of the
+    brand. That last part is specific to me. It might not apply to you.
+  </p>
+
+  <p>
+    If you read this and you're still on a no-code subscription you're happy with — stay there. If you
+    read this and you've been quietly resenting that subscription for months — the path is shorter than
+    you think. Four hours over a weekend. Public repo. $0/month.
+  </p>
+
+  <p>
+    Build it. Or fork mine.
+  </p>
+</Guide>

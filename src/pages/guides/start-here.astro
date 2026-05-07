@@ -4,33 +4,32 @@ import Guide from "../../layouts/Guide.astro";
 
 <Guide
   title="AI Without the Bullshit"
-  description="Where to start when everyone's yelling at you about AI — and how to spend the next 30 days building something instead of doomscrolling another thread."
+  description="Where to start when everyone's yelling at you about AI — and the actual path I'd put you on if you walked into my office tomorrow."
   tier="Tier 01 / Entry"
-  eta="~12 min read"
+  eta="~14 min read"
   published="May 7, 2026"
 >
   <p>
     If you opened ChatGPT last month and feel like the world has already lapped you twice, you haven't.
-    You're standing in front of a noisy crowd and three categories of person are screaming at you.
-    The doomers say it's going to take your job by Christmas. The hypers say you can replace your whole
+    You're standing in front of a noisy crowd and three categories of person are screaming at you. The
+    doomers say it's going to take your job by Christmas. The hypers say you can replace your whole
     business with one prompt. And the gatekeepers — usually a guy with a $4,000 GPU and a Substack — will
     tell you that if you can't build your own agent, you're not "really" using AI.
   </p>
 
   <p>
-    All three are wrong. (Mostly. There's an asterisk on each one. We'll get to it.)
+    All three are wrong. (Mostly. There's an asterisk on each one.)
   </p>
 
   <p>
-    Here's the thing nobody trying to sell you a course will say out loud: AI in 2026 is mostly a
-    productivity tool, the same way email was in 2002. You don't need to "master" it. You need to use it
-    for one specific thing this week, see if it saved you time, and decide whether that thing is worth
-    doing again next week. That's it. That's the framework. The rest of this guide is just unpacking why
-    that's the framework, and what specifically to do this week.
+    Here's what nobody trying to sell you a course will say out loud: the best thing about AI in 2026
+    isn't that it lets you do more work — it's that it lets you do <em>less</em> work and ship better
+    output. The longer I use these tools, the less I'm typing. That's the whole game. The rest of this
+    guide is the path I'd put you on if you walked into my office tomorrow and asked me where to start.
   </p>
 
   <p class="pull">
-    Stop trying to learn AI. Start trying to ship something with AI.
+    The more you learn how to use AI, the less you actually have to work. That's the cheat code.
   </p>
 
   <h2>Why everyone's yelling</h2>
@@ -45,10 +44,9 @@ import Guide from "../../layouts/Guide.astro";
   <p>
     The people telling you AI will <em>10x your business</em> usually sell either a course, an agency
     service, or a subscription product whose retention depends on you believing it works. (I'm not saying
-    they're lying. I'm saying their paycheck has an opinion.) The signature move is a screenshot of
-    one prompt that produced one impressive output, with no mention of the seventeen prompts that
-    produced garbage before it. If you're a builder, you already know what survivorship bias looks like.
-    This is just that, with extra emojis.
+    they're lying. I'm saying their paycheck has an opinion.) The signature move is a screenshot of one
+    prompt that produced one impressive output, with no mention of the seventeen prompts that produced
+    garbage before it. Survivorship bias with extra emojis.
   </p>
 
   <h3>The doomers</h3>
@@ -77,133 +75,159 @@ import Guide from "../../layouts/Guide.astro";
     you to ship something this week. That's the gap.
   </p>
 
-  <h2>What actually matters (the short version)</h2>
+  <h2>What I'd actually recommend (no fence-sitting)</h2>
 
   <p>
-    Three things. They're embarrassingly simple. They're also what the actually-shipping operators I
-    know spend most of their time on.
+    I don't believe in giving you three options and walking away. So here's the actual path. I run six
+    concurrent projects and the tools below are what I'd put you on if you were starting today. If I'm
+    wrong about something, I'll update this page. (You can hold me to it — the page has a "last updated"
+    line at the top.)
   </p>
 
-  <ol>
-    <li>
-      <strong>Pick one task you do every week that takes more than an hour.</strong> Writing emails. Cleaning
-      a spreadsheet. Drafting client briefs. Naming files. Anything repetitive.
-    </li>
-    <li>
-      <strong>Spend 30 minutes trying to do it with ChatGPT, Claude, or Gemini.</strong> Pick one. They're
-      all good enough. Free tiers work. Paste the messy real version of the task in. See what happens.
-    </li>
-    <li>
-      <strong>Decide if it saved you time. If yes, do it again next week.</strong> That's the loop. It's
-      really that boring. And it's also why people who started boring six months ago are now ahead of
-      you, even though they haven't fine-tuned anything.
-    </li>
-  </ol>
+  <h3>Step 1 — Use Claude. Not ChatGPT.</h3>
 
   <p>
-    Most of the gap between "AI is changing everything" and "AI hasn't changed my Tuesday" is exactly
-    that loop. People who run the loop weekly compound. People who watch the threads about the loop
-    don't.
+    Get a free <a href="https://claude.ai" target="_blank" rel="noopener">Claude account</a> and
+    use it for one real task per day for a week. I know everyone tells you ChatGPT first because it's
+    the default. I'm telling you Claude.
   </p>
-
-  <h2>Tools, ranked by how much you need them right now</h2>
 
   <p>
-    I run six concurrent projects. Marketing automation, voice AI, AI video, AI music, a dating app,
-    plus the site you're reading. The tools I touch every day are not the trendy ones. They're the
-    boring ones that do one thing reliably. Here's the honest stack for someone starting today, in the
-    order I'd actually adopt them.
+    Why: Anthropic (the company that makes Claude) has built the cleanest operator ecosystem in 2026.
+    Their consumer chat is genuinely better at writing and reasoning. More importantly, if you fall in
+    love with it, the upgrade path is real — Claude Projects, Claude Code, MCP integrations. That entire
+    stack is what most builders I know are running on. ChatGPT is fine. Gemini is fine. Both will
+    eventually catch up. But if you're picking one to invest in <em>now</em>, pick the one whose
+    ecosystem you'll grow into.
   </p>
 
-  <h3>Tier 1 — Pick one. Use it daily.</h3>
+  <p>
+    The free tier is enough for the first month. Paid tier ($20/mo) makes sense once you're using it
+    5+ times a day. Paid Pro ($100-200/mo) makes sense when you're using it as a build environment, not
+    just a chat box.
+  </p>
+
+  <h3>Step 2 — When you outgrow chat, go straight to Claude Code.</h3>
+
+  <p>
+    This is the part most "AI for beginners" guides miss. Once you've used the chat for a few weeks and
+    you're saving real time, the next jump isn't to learn prompt engineering. It's to install
+    <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a> and
+    let it work directly in your files.
+  </p>
+
+  <p>
+    Claude Code is a terminal app that turns Claude into something closer to an actual junior developer
+    sitting at your desk. It can read your files, write code, run commands, and ask you for permission
+    before doing anything destructive. You don't need to know how to code. (I don't, formally — I left
+    school in ninth grade.) You just need to be able to describe what you want.
+  </p>
+
+  <p>
+    The site you're reading right now? Built end-to-end with Claude Code. Including this guide. Including
+    the form that captures your email. I described what I wanted, watched it work, corrected when it went
+    sideways. Total active time: about four hours over a weekend. The full story is in
+    <a href="/guides/built-this-site">Guide 02</a> when it ships.
+  </p>
+
+  <h3>Step 3 — When you need automations, start with Make.com. Not n8n.</h3>
+
+  <p>
+    "Automation" here means: AI talking to your email, your CRM, your spreadsheet, your Slack — anything
+    that ran without AI before. The two main tools people will recommend are
+    <a href="https://www.make.com" target="_blank" rel="noopener">Make.com</a> and
+    <a href="https://n8n.io" target="_blank" rel="noopener">n8n</a>. They're not the same. Don't let
+    anyone tell you "you can learn either in a weekend" — that's not true.
+  </p>
+
+  <p>
+    <strong>Make is meaningfully more user-friendly.</strong> Visual canvas, gentle learning curve,
+    enough power for 90% of what a solo operator or small business needs. Free tier exists, and you can
+    do real work on it.
+  </p>
+
+  <p>
+    <strong>n8n is more powerful but steeper.</strong> Self-hosted, code-friendly, infinite extensibility.
+    The kind of thing you migrate to <em>after</em> you've outgrown Make and you have specific reasons.
+    Don't start there. You'll bounce off the learning curve and decide AI automation isn't for you.
+  </p>
+
+  <p>
+    The honest part nobody else will tell you: <strong>you no longer have to learn either tool the slow
+    way.</strong> Open Claude (or Claude Code), describe the workflow you want, and ask it to walk you
+    through building it in Make. It will. Step by step. Click here, paste this, here's what this field
+    means. The "weeks of YouTube tutorials" path is dead. The "AI teaches me how to use AI" path took
+    its place. Use it.
+  </p>
+
+  <h3>Step 4 — Specialist tools (only when the work demands them).</h3>
 
   <ul>
     <li>
-      <strong>ChatGPT</strong>, <strong>Claude</strong>, or <strong>Gemini</strong>. Free tier is enough
-      for the first month. Paid tier ($20/mo) makes sense once you're using it 5+ times a day. Don't
-      overthink the choice — switching costs are zero, you can try all three in an afternoon. Most
-      operators I know use Claude for writing and ChatGPT for code, but that's a preference, not a rule.
-    </li>
-  </ul>
-
-  <h3>Tier 2 — Add when Tier 1 stops being enough.</h3>
-
-  <ul>
-    <li>
-      <strong>Make.com</strong> or <strong>n8n</strong> for connecting AI to other tools (Gmail, Slack,
-      your CRM). This is where AI starts saving you 10+ hours a week instead of 30 minutes.
-      Free tier exists. Learning curve: a weekend. Worth it.
+      <strong><a href="https://elevenlabs.io" target="_blank" rel="noopener">ElevenLabs</a></strong> for
+      voice generation. Best in class. Pay-as-you-go.
     </li>
     <li>
-      <strong>Cursor</strong> or <strong>Claude Code</strong> if you write any code, even shell scripts
-      and SQL queries. The leverage here is real and not hype. (Asterisk: this assumes you already
-      write some code occasionally. If not, skip.)
+      <strong><a href="https://www.segmind.com" target="_blank" rel="noopener">Segmind</a></strong> or
+      <strong><a href="https://replicate.com" target="_blank" rel="noopener">Replicate</a></strong>
+      for image / video generation. Pay-as-you-go.
     </li>
-  </ul>
-
-  <h3>Tier 3 — Specialist tools. Only if your work needs them.</h3>
-
-  <ul>
     <li>
-      <strong>ElevenLabs</strong> for voice. <strong>Segmind</strong> or <strong>Replicate</strong> for
-      image / video generation. <strong>VAPI</strong> for outbound voice agents. Pay-as-you-go pricing.
-      Don't subscribe to anything until you've used it for an actual job.
+      <strong><a href="https://vapi.ai" target="_blank" rel="noopener">VAPI</a></strong> for outbound
+      voice agents. (I run a client project on this. It works.)
     </li>
   </ul>
 
   <p>
-    The honest version of "my 2026 AI stack" is: 80% of my AI work happens in Claude and Make. The other
-    20% is specialist tools per project. If a guide is selling you 47 tools you "need," they're not
-    counting customers, they're counting affiliate clicks.
+    Don't subscribe to anything in this list until you have an actual job that needs it. Pay-as-you-go
+    is your friend.
   </p>
 
   <h2>The 30-day plan that actually works</h2>
 
   <p>
-    If I had to start from zero again — same brain, no audience, 30 minutes a day — this is what I'd do.
-    No course required. No paid product required.
+    If I had to start from zero again — same brain, no audience, 30 minutes a day — this is exactly what
+    I'd do. No course required. No paid product required (until week 3, maybe).
   </p>
 
   <p>
-    <strong>Week 1: Use ChatGPT (or Claude) for one real task per day.</strong> Don't try to learn it.
-    Use it. The task should be something you'd already be doing — drafting an email, summarizing a
-    meeting, naming a project. The point isn't to be impressed by the output. The point is to learn
-    where it helps and where it gets in your way.
+    <strong>Week 1: Use Claude for one real task per day.</strong> Don't try to "learn" it. Use it. The
+    task should be something you'd already be doing — drafting an email, summarizing a meeting, naming a
+    project, untangling a confusing message you got. The point isn't to be impressed by the output. The
+    point is to learn where it helps and where it gets in your way.
   </p>
 
   <p>
     <strong>Week 2: Pick one task that worked and try to do it 5x faster.</strong> Better prompts. Save
-    a template. Maybe paste in a previous email as an example. The skill you're building isn't "AI
-    expertise." It's editing-by-example. That's it.
+    a template inside Claude Projects (free feature, criminally underused). Maybe paste in a previous
+    email as an example. The skill you're building isn't "AI expertise." It's editing-by-example.
   </p>
 
   <p>
-    <strong>Week 3: Connect it to one other tool you already use.</strong> Make.com or Zapier. Auto-draft
-    a reply when an email hits a specific label. Auto-summarize a meeting transcript when it lands in
-    Drive. Pick the smallest version of "AI talking to another tool" you can imagine, and build that one.
+    <strong>Week 3: Connect Claude to one other tool you already use.</strong> Use Make.com. Pick the
+    smallest version of "AI talking to another tool" you can imagine — auto-summarize a meeting
+    transcript when it lands in Drive, auto-draft a reply when an email hits a specific label — and ask
+    Claude to walk you through building it in Make. Don't watch a tutorial. Have Claude be the tutorial.
   </p>
 
   <p>
-    <strong>Week 4: Write down what worked.</strong> A doc, a thread, a private note. Doesn't matter.
-    The act of writing it down forces you to remember the loop. People who wrote down what worked in
-    Week 4 are running the loop forever. People who didn't, aren't.
+    <strong>Week 4: Install Claude Code.</strong> Try it on something small — write a script that renames
+    your files, generate a one-page landing site, fix a spreadsheet formula you've been afraid of. The
+    moment you realize Claude Code can do real work in your real files is the moment "AI" stops being
+    abstract.
   </p>
 
   <p class="pull">
-    Four weeks. One task per week. That's the whole thing.
+    Four weeks. Ends with a real toolchain you can actually ship with.
   </p>
 
   <h2>What to skip (for now)</h2>
 
-  <p>
-    A non-exhaustive list of stuff that's getting attention but doesn't deserve yours yet:
-  </p>
-
   <ul>
     <li>
       <strong>"Build your own agent."</strong> The actual market for AI agents in 2026 is somewhere
-      between "interesting demos" and "production-grade", with very few exceptions. Wait six months.
-      The good ones will be obvious.
+      between "interesting demos" and "production-grade", with very few exceptions. Wait six months. The
+      good ones will be obvious.
     </li>
     <li>
       <strong>Fine-tuning your own model.</strong> If you have to ask whether you need to, you don't.
@@ -217,23 +241,48 @@ import Guide from "../../layouts/Guide.astro";
       Cancel two. Then add a new one. Compounding works the same way for software subscriptions as it
       does for everything else.
     </li>
+    <li>
+      <strong>"Prompt engineering" as a discipline.</strong> Real prompt skill comes from using the tool
+      a lot, not from reading about it. Skip the courses.
+    </li>
   </ul>
+
+  <h2>The paradox nobody talks about</h2>
+
+  <p>
+    Here's something I've noticed and it took me a year to put words to it. Almost every other skill in
+    your life works the same way: the more you learn, the more complex the work gets, because you're now
+    playing at a higher level. Pianists practice scales for forty years. Lawyers read more case law every
+    year. Builders do harder builds.
+  </p>
+
+  <p>
+    AI is the opposite. The more you learn how to use it, the <em>less</em> you have to do. AI absorbs
+    more of the work as your prompting improves. Beginners do everything by hand and use AI for one
+    sentence at a time. People who've been at this for a year hand AI the whole task and review the
+    output. People who've been at this for two years hand AI the goal and let it figure out the task.
+    The skill ceiling isn't "type faster." The skill ceiling is "describe the goal so well the work
+    happens without you."
+  </p>
+
+  <p>
+    That's the actual reason to learn this stuff. Not because AI will take your job. Because AI will
+    take the boring half of your job, and you get to keep the half you actually liked.
+  </p>
 
   <h2>The honest part</h2>
 
   <p>
-    I'm not a developer. I never finished high school — I left after ninth grade, which my parents
-    were not thrilled about. I learned every tool in my stack by trying it on a real problem, getting
-    confused, asking a model to explain it like I was twelve, and then trying again. The thing nobody
-    tells you about AI right now is that the cheat code <em>is</em> "ask a model to explain it like
-    you're twelve." That's it. That's the secret. There's no priesthood. There's just the loop, and
-    whether you're running it.
+    I'm not a developer. I never finished high school — I left after ninth grade, which my parents were
+    not thrilled about. I learned every tool in my stack by trying it on a real problem, getting confused,
+    asking Claude to explain it like I was twelve, and trying again. The thing nobody tells you about AI
+    right now is that the cheat code <em>is</em> "ask a model to explain it like you're twelve." That's
+    it. There's no priesthood. There's just the loop, and whether you're running it.
   </p>
 
   <p>
-    If you read this whole thing and you only do one thing this week, do this: pick one task you'd
-    normally do alone, do it with Claude or ChatGPT instead, and decide if it was faster. Then do it
-    again on Tuesday.
+    If you only do one thing this week, do this: open Claude, pick one task you'd normally do alone, do
+    it with Claude instead, and decide if it was faster. Then do it again on Tuesday.
   </p>
 
   <p>
