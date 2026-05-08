@@ -121,52 +121,60 @@ import Guide from "../../layouts/Guide.astro";
     line at the top.)
   </p>
 
-  <h3>Step 1 — Use Claude. Not ChatGPT.</h3>
+  <h3>Step 1 — Personally I'd start with Claude. Here's why.</h3>
 
   <p>
-    Get a free <a href="https://claude.ai" target="_blank" rel="noopener">Claude account</a> and
-    use it for one real task per day for a week. I know everyone tells you
-    <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a> first because it's the
-    default, or <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a> if you're
-    deep in Google. I'm telling you Claude.
+    Get a free <a href="https://claude.ai" target="_blank" rel="noopener">Claude account</a> and use it
+    for one real task per day for a week. The honest version of this recommendation: the major models
+    are all genuinely good in 2026. <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>
+    is excellent. <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a> is excellent.
+    <a href="https://www.kimi.com" target="_blank" rel="noopener">Kimi 2</a> is impressive and cheap.
+    You're not making a wrong choice with any of them.
   </p>
 
   <p>
-    Why: Anthropic (the company that makes Claude) has built the cleanest operator ecosystem in 2026.
-    Their consumer chat is genuinely better at writing and reasoning. More importantly, if you fall in
-    love with it, the upgrade path is real — Claude Projects, Claude Code, MCP integrations. That entire
-    stack is what most builders I know are running on. ChatGPT is fine. Gemini is fine. Both will
-    eventually catch up. But if you're picking one to invest in <em>now</em>, pick the one whose
-    ecosystem you'll grow into.
+    Where I'd push you toward Claude is on <em>ecosystem fit</em>. Anthropic has built the cleanest
+    operator stack I've used: consumer chat → Projects → Claude Code → MCP integrations. Once you fall
+    in love with the chat, the upgrade path is real and the work compounds. If you'd rather start with
+    ChatGPT because that's where your friends are, or
+    <a href="https://openai.com/codex" target="_blank" rel="noopener">OpenAI Codex</a> because you've
+    heard it's slightly cheaper than Claude Code (which is true, depending on usage), do it. Same path,
+    different supplier. The recommendations below adapt to whichever you pick.
   </p>
 
   <p>
-    The free tier is enough for the first month. Paid tier ($20/mo) makes sense once you're using it
-    5+ times a day. Paid Pro ($100-200/mo) makes sense when you're using it as a build environment, not
-    just a chat box.
+    Free tier is enough for the first month on any of them. Paid tier ($20/mo on most) makes sense
+    once you're using it 5+ times a day. Pro tier ($100-200/mo on Claude, similar on ChatGPT) makes
+    sense when you're using it as a build environment, not just a chat box.
   </p>
 
-  <h3>Step 2 — When you outgrow chat, go straight to Claude Code.</h3>
+  <h3>Step 2 — When you outgrow chat, install a coding agent.</h3>
 
   <p>
-    This is the part most "AI for beginners" guides miss. Once you've used the chat for a few weeks and
-    you're saving real time, the next jump isn't to learn prompt engineering. It's to install
-    <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a> and
-    let it work directly in your files.
-  </p>
-
-  <p>
-    Claude Code is a terminal app that turns Claude into something closer to an actual junior developer
-    sitting at your desk. It can read your files, write code, run commands, and ask you for permission
-    before doing anything destructive. You don't need to know how to code. (I don't, formally — I left
-    school in ninth grade.) You just need to be able to describe what you want.
+    This is the part most "AI for beginners" guides miss. Once you've used the chat for a few weeks
+    and you're saving real time, the next jump isn't to learn prompt engineering. It's to let an AI
+    work directly in your files.
   </p>
 
   <p>
-    The site you're reading right now? Built end-to-end with Claude Code. Including this guide. Including
-    the form that captures your email. I described what I wanted, watched it work, corrected when it went
-    sideways. Total active time: about four hours over a weekend. The full story is in
-    <a href="/guides/built-this-site">Guide 02</a> when it ships.
+    Two main options:
+    <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
+    (Anthropic) and <a href="https://openai.com/codex" target="_blank" rel="noopener">OpenAI Codex</a>
+    (the new agent CLI from OpenAI). Both are terminal apps that read your files, write code, run
+    commands, and ask permission before destructive moves. Codex is meaningfully cheaper at high
+    usage. Claude Code is what I personally run because the file-handling, MCP plugin ecosystem, and
+    the way it handles long sessions all click for me. Either is a real upgrade over chat.
+  </p>
+
+  <p>
+    You don't need to know how to code. (I don't, formally — I left school in ninth grade.) You just
+    need to be able to describe what you want, watch it work, and correct when it goes sideways.
+  </p>
+
+  <p>
+    The site you're reading right now? Built end-to-end with Claude Code. Including this guide.
+    Including the form that captures your email. Total active time: about four hours over a weekend.
+    Full story in <a href="/guides/built-this-site">Guide 02</a>.
   </p>
 
   <h3>Step 3 — When you need automations, start with Make.com. Not n8n.</h3>
